@@ -7,11 +7,11 @@ ddb.bot(
 		desc: 'To check ping',
 		type: 'misc',
 	},
-	async (sock, match) => {
+	async (conn, match) => {
 		const start = new Date().getTime()
-		await sock.send('```Ping!```')
+		await conn.send('```Ping!```')
 		const end = new Date().getTime()
-		return await sock.sendmessage(
+		return await conn.sendmessage(
 			'*Pong!*\n ```' + (end - start) + '``` *ms*'
 		)
 	}
