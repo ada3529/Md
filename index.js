@@ -27,7 +27,7 @@ const {
 } = require('./lib/');
 const { DataTypes } = require('sequelize');
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) });
-const { getMessage } = require("./plugins/sql/greetings");
+const { getMessage } = require("./lib/sql/greetings");
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const axios = require('axios');
@@ -44,13 +44,13 @@ const BotDB = Config.DATABASE.define('Bot', {
     }
 });
 
-fs.readdirSync('./plugins/sql/').forEach(plugin => {
+fs.readdirSync('./lib/sql/').forEach(plugin => {
     if(path.extname(plugin).toLowerCase() == '.js') {
-        require('./plugins/sql/' + plugin);
+        require('./lib/sql/' + plugin);
     }
 });
 
-const plugindb = require('./plugins/sql/plugin');
+const plugindb = require('./lib/sql/plugin');
 
 String.prototype.format = function () {
     var i = 0, args = arguments;
