@@ -86,7 +86,7 @@ async function whatsappBot() {
    
             store.bind(conn.ev)    
 
-        consol.log('✅ Login successful!')
+        console.log('✅ Login successful!')
 
         console.log('⬇️ Installing external plugins...')
 
