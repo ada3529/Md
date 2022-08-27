@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const events = require("./lib/inrl");
-const chalk = require('chalk');
 const Config = require('./config');
 const { 
           default: makeWASocket, 
@@ -87,13 +86,9 @@ async function whatsappBot() {
    
             store.bind(conn.ev)    
 
-        console.log(
-            chalk.green.bold('✅ Login successful!')
-        );
+        consol.log('✅ Login successful!')
 
-        console.log(
-            chalk.blueBright.italic('⬇️ Installing external plugins...')
-        );
+        console.log('⬇️ Installing external plugins...')
 
         var plugins = await plugindb.PluginDB.findAll();
         plugins.map(async (plugin) => {
@@ -107,20 +102,16 @@ async function whatsappBot() {
             }
         });
 
-        console.log(
-            chalk.blueBright.italic('⬇️  Installing plugins...')
-        );
-
+        console.log('⬇️  Installing plugins...')
+       
         fs.readdirSync('./plugins').forEach(plugin => {
             if(path.extname(plugin).toLowerCase() == '.js') {
                 require('./plugins/' + plugin);
             }
         });
 
-        console.log(
-            chalk.green.bold('✅ Plugins installed!')
-        );
-    
+        console.log('✅ Plugins installed!')
+        
     conn.ev.on("messages.upsert",async msg => {
         if (msg.key && msg.key.remoteJid == 'status@broadcast') return;
 
