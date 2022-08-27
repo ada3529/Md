@@ -87,7 +87,7 @@ async function whatsappBot() {
             store.bind(conn.ev)    
 
         console.log('✅ Login successful!')
-
+conn.ev.on('open', async () => {
         console.log('⬇️ Installing external plugins...')
 
         var plugins = await plugindb.PluginDB.findAll();
@@ -110,8 +110,9 @@ async function whatsappBot() {
             }
         });
 
-        console.log('✅ Plugins installed!')
-        
+        console.log('✅ Plugins installed!');
+await sock.sendMessage(sock.user.id, { text: 'ᴀʙᴜ ᴍᴅ ᴡᴏʀᴋɪɴɢ ɴᴏᴡ 🤤🤍' })
+        });
     conn.ev.on("messages.upsert",async msg => {
         if (msg.key && msg.key.remoteJid == 'status@broadcast') return;
 
